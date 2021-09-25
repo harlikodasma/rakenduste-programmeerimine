@@ -1,10 +1,12 @@
 import ItemList from '../components/ItemList';
+import CategoryList from '../components/CategoryList';
 import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const [loadedItems, setLoadedItems] = useState([]);
+    const [loadedCategories, setLoadedCategories] = useState([]);
 
     useEffect(()=>{
         fetch('http://localhost:8080/items').then(res => {
@@ -13,6 +15,16 @@ function Home() {
             console.log(data);
             setIsLoading(false);
             setLoadedItems(data);
+        });
+    }, [])
+
+    useEffect(()=>{
+        fetch('http://localhost:8080/categories').then(res => {
+            return res.json();
+        }).then(data => {
+            console.log(data);
+            setIsLoading(false);
+            setLoadedCategories(data);
         });
     }, [])
 
@@ -28,6 +40,11 @@ function Home() {
                 <button>Lisa uus ese</button>
             </Link>
             <ItemList items={loadedItems} />
+            <br />
+            <Link to="add-category">
+                <button>Lisa uus kategooria</button>
+            </Link>
+            <CategoryList categories={loadedCategories} />
         </div>
     )
 }
