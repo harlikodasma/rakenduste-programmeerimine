@@ -2,6 +2,7 @@ import ItemList from '../components/ItemList';
 import CategoryList from '../components/CategoryList';
 import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import '../General.css'
 
 function Home() {
     const [isLoading, setIsLoading] = useState(true);
@@ -36,15 +37,19 @@ function Home() {
 
     return (
         <div>
+            <h2>Esemed</h2>
+            <ItemList items={loadedItems} />
+            <br />
             <Link to="add-item">
                 <button>Lisa uus ese</button>
             </Link>
-            <ItemList items={loadedItems} />
+            <br />
+            <h2>Kategooriad</h2>
+            <CategoryList categories={loadedCategories} />
             <br />
             <Link to="add-category">
                 <button>Lisa uus kategooria</button>
             </Link>
-            <CategoryList categories={loadedCategories} />
         </div>
     )
 }

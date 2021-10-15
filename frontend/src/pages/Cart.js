@@ -1,8 +1,6 @@
 function Cart() {
     return (
-        <div>
-            Ostukorv
-        </div>
+        <h2>Ostukorv</h2>
     )
 }
 

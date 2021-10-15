@@ -1,5 +1,6 @@
 import './AddItemForm.css';
 import {useRef} from 'react';
+import '../General.css'
 
 function AddItemForm(props) {
     const nameInputRef = useRef();
@@ -22,7 +23,7 @@ function AddItemForm(props) {
         props.onAddItem(item);
     }
     return (
-        <form onSubmit={formSubmitHandler}>
+        <form onSubmit={formSubmitHandler} class="addform">
             <label>Eseme nimi</label><br />
             <input type="text" placeholder="Nimi" required ref={nameInputRef} /><br />
             <label>Eseme hind</label><br />

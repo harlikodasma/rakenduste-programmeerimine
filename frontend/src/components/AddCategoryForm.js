@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import '../General.css'
 
 function AddCategoryForm(props) {
     const nameInputRef = useRef();
@@ -18,7 +19,7 @@ function AddCategoryForm(props) {
         props.onAddCategory(category);
     }
     return (
-        <form onSubmit={formSubmitHandler}>
+        <form onSubmit={formSubmitHandler} class="addform">
             <label>Kategooria nimi</label><br />
             <input type="text" placeholder="Nimi" required ref={nameInputRef} /><br />
             <label>Kategooria tüüp</label><br />
