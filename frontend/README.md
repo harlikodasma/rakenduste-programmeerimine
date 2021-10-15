@@ -1,6 +1,6 @@
 # 25.10 tähtajaga kodutöö
 
-CSSiga komponentide kujudamine
+CSSiga komponentide kujundamine
 
 ## Home lehekülg
 
