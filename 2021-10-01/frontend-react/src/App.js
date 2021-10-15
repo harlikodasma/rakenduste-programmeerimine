@@ -4,6 +4,9 @@ import Fun from './components/Fun';
 import Greeting from './components/Greeting';
 import Lesson from "./components/Lesson";
 import BotCheck from "./components/BotCheck";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import ShowMagic from "./components/ShowMagic";
+import Posts from "./pages/Posts";
 
 function App() {
   const [magicNumber, setMagicNumber] = useState(0)
@@ -33,10 +36,19 @@ function App() {
         setShow={setShow}
       />
       <Greeting name="Harli" age="21"/>
+      <br/><br/><br/>
+      <h2>Kodune töö</h2>
       <Lesson which="1" lesson="Chemistry"/>
       <Lesson which="2" lesson="Physics"/>
       <BotCheck correct="Eepiliselt tore"/>
       <BotCheck correct="Suurepäraselt koomiline"/>
+      <br/><br/><br/>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ShowMagic} />
+          <Route exact path="/posts" component={Posts} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
