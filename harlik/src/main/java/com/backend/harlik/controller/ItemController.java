@@ -2,6 +2,7 @@ package com.backend.harlik.controller;
 
 import com.backend.harlik.model.Item;
 import com.backend.harlik.service.ItemService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,13 +30,14 @@ public class ItemController {
         return itemService.getItems();
     }
 
+    @ApiOperation("API otspunkt eseme muutmiseks, alati saata kaasa ID")
     @PostMapping("edit-item")
     public void editItem(@RequestBody Item item) {
         itemService.editItem(item);
     }
 
-    @PostMapping("view-item/{id}")
-    public Item getOneItem(@RequestBody Long id) throws Exception {
+    @GetMapping("view-item/{id}")
+    public Item getOneItem(@PathVariable Long id) throws Exception {
         return itemService.getOneItem(id);
     }
 }

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import '../General.css'
 
-function Home() {
+function AdminHome() {
     const [isLoading, setIsLoading] = useState(true);
     const [loadedItems, setLoadedItems] = useState([]);
     const [loadedCategories, setLoadedCategories] = useState([]);
@@ -13,7 +13,7 @@ function Home() {
         fetch('http://localhost:8080/items').then(res => {
             return res.json();
         }).then(data => {
-            console.log(data);
+            //console.log(data);
             setIsLoading(false);
             setLoadedItems(data);
         });
@@ -23,11 +23,21 @@ function Home() {
         fetch('http://localhost:8080/categories').then(res => {
             return res.json();
         }).then(data => {
-            console.log(data);
+            //console.log(data);
             setIsLoading(false);
             setLoadedCategories(data);
         });
     }, [])
+
+    function makeDeleteRequest(itemId) {
+        fetch('http://localhost:8080/delete-item/' + itemId, { method: 'DELETE'} ).then(res => {
+            return res.json();
+        }).then(data => {
+            console.log(data);
+            setIsLoading(false);
+            setLoadedItems(data);
+        });
+    }
 
     if(isLoading) {
         return (
@@ -38,20 +48,14 @@ function Home() {
     return (
         <div>
             <h2>Esemed</h2>
-            <ItemList isAddToCart={true} items={loadedItems} />
+            <ItemList onDeleteItem={makeDeleteRequest} isAddToCart={false} items={loadedItems} />
             <br />
-            <Link to="add-item">
-                <button>Lisa uus ese</button>
-            </Link>
             <br />
             <h2>Kategooriad</h2>
             <CategoryList categories={loadedCategories} />
             <br />
-            <Link to="add-category">
-                <button>Lisa uus kategooria</button>
-            </Link>
         </div>
     )
 }
 
-export default Home;
+export default AdminHome;

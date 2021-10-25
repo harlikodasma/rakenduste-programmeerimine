@@ -19,7 +19,7 @@ function AddCategoryForm(props) {
         props.onAddCategory(category);
     }
     return (
-        <form onSubmit={formSubmitHandler} class="addform">
+        <form onSubmit={formSubmitHandler} className="addform">
             <label>Kategooria nimi</label><br />
             <input type="text" placeholder="Nimi" required ref={nameInputRef} /><br />
             <label>Kategooria tüüp</label><br />

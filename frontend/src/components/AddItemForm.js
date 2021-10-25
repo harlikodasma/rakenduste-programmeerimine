@@ -23,7 +23,7 @@ function AddItemForm(props) {
         props.onAddItem(item);
     }
     return (
-        <form onSubmit={formSubmitHandler} class="addform">
+        <form onSubmit={formSubmitHandler} className="addform">
             <label>Eseme nimi</label><br />
             <input type="text" placeholder="Nimi" required ref={nameInputRef} /><br />
             <label>Eseme hind</label><br />
