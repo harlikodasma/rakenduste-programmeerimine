@@ -30,7 +30,8 @@ function ShowMagic() {
         show={show}
         setShow={setShow}
       />
-      <Greeting name="Harli" age="21"/>
+      {/* <Greeting name="Harli" age={21}/> */}
+      <Greeting />
     </div>
   );
 }
